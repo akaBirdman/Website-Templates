@@ -43,46 +43,41 @@ header.navigation {
     background: var(--_background);
     color: var(--_color);
     border-bottom: 1px solid var(--_border);
+}
 
-    & * {
-        color: inherit;
-        text-decoration: none;
-    }
+header.navigation * {
+    color: inherit;
+    text-decoration: none;
+}
 
-    .logo {
-        font-size: 20pt;
-        font-weight: 600;
-    }
+header.navigation .logo {
+    font-size: 20pt;
+    font-weight: 600;
+}
 
-    & nav {
-        display: flex;
+header.navigation nav {
+    display: flex;
+}
 
-        #mobile-navigation {
-            #nav-checkbox {
-                display: none;
-            }    
-        }
+header.navigation #nav-checkbox {
+    display: none;
+} 
 
-        & ul {
-            list-style: none;
-            display: flex;
+header.navigation ul {
+    list-style: none;
+    display: flex;
+}
 
-            & > li {
-                padding: 0 1rem;
-            }
+header.navigation ul > li {
+    padding: 0 1rem;
+}
 
-            &:has(li:hover) {
-                & li {
-                    opacity: 0.2;
-                    transition: all 200ms ease;
-                }
-
-                & li:hover {
-                    opacity: 1;
-                }
-            }
-        }
-    }
+header.navigation ul:has(li:hover) li {
+    opacity: 0.2;
+    transition: all 200ms ease;
+}
+header.navigation ul:has(li:hover) li:hover {
+    opacity: 1;
 }
 
 /* Desktop Query */
@@ -122,27 +117,36 @@ header.navigation {
         & ul {
             position: absolute;
             top: 3rem;
-            right: 0;
+            right: -100%;
             padding: 1rem;
             z-index: -1;
             
-            /* flex-direction: column;
+            flex-direction: column;
             align-items: flex-end;
-            gap: 1rem; */
+            gap: 1rem;
 
-            display: grid;
-            grid-template-columns: 0fr;
+            /* display: grid;
+            grid-template-columns: 0fr; */
             overflow: hidden;
             
             font-size: 16pt;
             
             border-bottom: 1px solid var(--_border);
             border-left: 1px solid var(--_border);
+
+            transition: all 300ms;
+
+            & * {
+                overflow: hidden;
+                padding: 0;
+                white-space: nowrap;
+            }
         }
 
         &:has(#nav-checkbox:checked) {
             & ul {
-                visibility: hidden;
+                grid-template-columns: 1fr;
+                right: 0;
             }
         }
     }
