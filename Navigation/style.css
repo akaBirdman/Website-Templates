@@ -72,13 +72,17 @@ header.navigation ul > li {
     padding: 0 1rem;
 }
 
-header.navigation ul:has(li:hover) li {
-    opacity: 0.2;
-    transition: all 200ms ease;
+@supports selector(:has(h1)) {
+    header.navigation ul:has(li:hover) li {
+        opacity: 0.2;
+        transition: all 200ms ease;
+    }
+    
+    header.navigation ul:has(li:hover) li:hover {
+        opacity: 1;
+    }
 }
-header.navigation ul:has(li:hover) li:hover {
-    opacity: 1;
-}
+
 
 /* Desktop Query */
 @media only screen and (min-width: 768px) {
