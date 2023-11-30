@@ -1,0 +1,203 @@
+body {
+    --color-background: whitesmoke;
+    --color-text: black;
+    --color-primary: orange;
+    --color-secondary: purple;
+    --color-accent: white;
+
+    min-height: 100vh;
+    background: var(--color-background);
+    font-family: Courier;
+}
+
+body.dark-mode {
+    --color-background: black;
+    --color-text: whitesmoke;
+    --color-primary: rgb(0, 255, 242);
+    --color-secondary: rgb(186, 5, 192);
+    --color-accent: black;
+}
+
+.toggle-mode {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Header / Navigation                            */
+/* -------------------------------------------------------------------------- */
+header.navigation {
+    --_background: var(--color-accent);
+    --_color: var(--color-text);
+    --_border: var(--color-text);
+
+    position: sticky;
+    z-index: 9999;
+    top: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 1rem;
+    height: 3rem;
+
+    background: var(--_background);
+    color: var(--_color);
+    border-bottom: 1px solid var(--_border);
+}
+
+header.navigation * {
+    color: inherit;
+    text-decoration: none;
+}
+
+header.navigation .logo {
+    font-size: 20pt;
+    font-weight: 600;
+}
+
+#nav-main {
+    display: flex;
+}
+
+#nav-main #nav-checkbox {
+    display: none;
+} 
+
+#nav-main ul {
+    list-style: none;
+    display: flex;
+}
+
+#nav-main ul > li {
+    padding: 0 1rem;
+}
+
+#mobile-navigation label {
+    display: flex;
+    align-items: center;
+    font-size: 16pt;
+    display: grid;
+    grid-template-areas: "stack";
+    width: 2ch;
+}
+
+#mobile-navigation label * {
+    grid-area: stack;
+    text-align: center;
+    transition: font-size 100ms cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@supports selector(:has(h1)) {
+    header.navigation ul:has(li:hover) li {
+        opacity: 0.2;
+        transition: opacity 200ms ease;
+    }
+    
+    header.navigation ul:has(li:hover) li:hover {
+        opacity: 1;
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Media Queries                               */
+/* -------------------------------------------------------------------------- */
+
+/* Desktop Query */
+@media only screen and (min-width: 768px) {
+    .mobile,
+    .tablet {
+        display: none;
+    }
+
+    .desktop {
+        display: block;
+    }
+}
+
+/* Tablet Query */
+@media only screen and (max-width: 768px) {
+    .mobile,
+    .desktop {
+        display: none;
+    }
+
+    .tablet {
+        display: block;
+    }
+
+    #nav-main {
+        display: grid;
+        grid-template-rows: 100% 1fr;
+        min-height: 100%;
+    }
+
+    #nav-main #mobile-navigation {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    #nav-main ul {
+        position: absolute;
+        top: 3rem;
+        right: -100%;
+        padding: 1rem;
+        z-index: -1;
+        
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1rem;
+
+        overflow: hidden;
+        
+        font-size: 16pt;
+        
+        border-bottom: 1px solid var(--_border);
+        border-left: 1px solid var(--_border);
+
+        transition: right 400ms cubic-bezier(0.4, 0, 0.6, 1);
+    }
+
+    #nav-main ul * {
+        overflow: hidden;
+        padding: 0;
+        white-space: nowrap;
+    }
+
+    #nav-main svg path {
+        fill: var(--_color);
+    }
+
+    #nav-main #nav-close {
+        font-size: 0pt;
+    }
+
+    #nav-main:has(#nav-checkbox:checked) #nav-close {
+        font-size: inherit;
+    }
+
+    #nav-main:has(#nav-checkbox:checked) #nav-open {
+        font-size: 0pt;
+    }
+
+    #nav-main:has(#nav-checkbox:checked) ul {
+        grid-template-columns: 1fr;
+        right: 0;
+    }
+}
+
+/* Mobile Query */
+@media only screen and (max-width: 480px) {
+    .desktop,
+    .tablet {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+}

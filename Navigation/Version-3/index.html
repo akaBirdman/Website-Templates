@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/setup.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/cb8625b2b2.js" crossorigin="anonymous"></script>
+    <title>Navigation Templates</title>
+</head>
+<body class="dark-mode">
+    <div class="toggle-mode">
+        <button onclick="toggle_theme()">Click Me</button>
+    </div>
+
+    <header class="navigation">
+        <div class="logo">LOGO</div>
+        <nav id="nav-main">
+            <div id="mobile-navigation" class="mobile tablet">
+                <input type="checkbox" id="nav-checkbox">
+                <label for="nav-checkbox">
+                    <i id="nav-close" class="fa-solid fa-xmark"></i>
+                    <i id="nav-open" class="fa-solid fa-bars"></i>
+                </label>
+            </div>
+            <ul>
+                <li><a href="../Version-1/">Version 1</a></li>
+                <li><a href="../Version-2/">Version 2</a></li>
+                <li><a href="../Version-3/">Version 3</a></li>
+                <li><a href="">Version 4</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script src="main.js"></script>
+</body>
+</html>
